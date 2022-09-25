@@ -1,0 +1,6 @@
+main.o
+outfile.txt
+parsing_cmds.o
+parsing_paths.o
+spliting.o
+utils.o

@@ -6,7 +6,7 @@
 /*   By: dmendonc <dmendonc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 18:20:23 by dmendonc          #+#    #+#             */
-/*   Updated: 2022/08/25 19:07:47 by dmendonc         ###   ########.fr       */
+/*   Updated: 2022/09/25 21:25:45 by dmendonc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,11 +75,13 @@ int	path_size(t_info *info, int index, int i_p)
 	int		i;
 	int		j;
 
-	i = -1;
-	j = -1;
-	while(info->paths[i_p][++i]);
-	while(info->cmdx[index][0][++j]);
-	return(i + j);
+	i = 0;
+	j = 0;
+	while (info->paths[i_p][i])
+		i++;
+	while (info->cmdx[index][0][++j])
+		j++;
+	return (i + j);
 }
 
 // -----------------------------------------------------------------------------

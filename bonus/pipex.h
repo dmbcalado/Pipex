@@ -6,7 +6,7 @@
 /*   By: dmendonc <dmendonc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 15:58:54 by dmendonc          #+#    #+#             */
-/*   Updated: 2022/08/25 23:00:02 by dmendonc         ###   ########.fr       */
+/*   Updated: 2022/09/25 21:38:28 by dmendonc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,6 @@ int		compare(const char *s1, const char *s2);
 int		how_many_paths(char const *s, char c);
 void	safeties(int argc, int saf);
 void	redirect_fds(int infd, int outfd);
-
-
-
 
 //	^V^V^V^V^    PARSING THE PATHS    ^V^V^V^V^
 

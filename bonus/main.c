@@ -6,12 +6,11 @@
 /*   By: dmendonc <dmendonc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 16:53:40 by dmendonc          #+#    #+#             */
-/*   Updated: 2022/08/25 23:03:31 by dmendonc         ###   ########.fr       */
+/*   Updated: 2022/09/25 21:38:07 by dmendonc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
-
 // -----------------------------------------------------------------------------
 // In the child fork, we want to separate the argv[] into "cmd" "arg1" ...
 // after that, colect the paths that exist in the envp, join the paths
@@ -118,16 +117,15 @@ int	main(int argc, char **argv, char **envp)
 	int		i;
 	t_info	info;
 
-
 	i = -1;
 	parsing_paths (&info, envp);
 	parsing_cmds (&info, argv, argc);
-	info.pfd = (int **)malloc(info.cmd_nbr * sizeof(int *));\
+	info.pfd = (int **)malloc(info.cmd_nbr * sizeof(int *));
 	while (++i < info.cmd_nbr)
 		info.pfd[i] = (int *)malloc(2 * sizeof(int));
 	info.ffd[0] = open (argv[1], O_RDONLY);
 	info.ffd[1] = open (argv[argc - 1], O_CREAT | O_TRUNC | O_RDWR, 0644);
- 	if (info.ffd[0] == -1 || info.ffd[1] == -1)
+	if (info.ffd[0] == -1 || info.ffd[1] == -1)
 		safeties (argc, 1);
 	i = -1;
 	while (++i < info.cmd_nbr)

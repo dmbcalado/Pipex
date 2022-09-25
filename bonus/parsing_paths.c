@@ -6,7 +6,7 @@
 /*   By: dmendonc <dmendonc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 19:13:18 by dmendonc          #+#    #+#             */
-/*   Updated: 2022/08/25 18:10:16 by dmendonc         ###   ########.fr       */
+/*   Updated: 2022/09/25 21:35:36 by dmendonc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,16 +25,17 @@ void	path_str(t_info *info, char **envp)
 	int		k;
 
 	i = -1;
-	j = -1;
-	k =  4;
-	while(envp[++i] != 0)
+	j = 0;
+	k = 4;
+	while (envp[++i] != 0)
 	{
-		if (compare(envp[i], "PATH") == -2)
-			break;
+		if (compare (envp[i], "PATH") == -2)
+			break ;
 	}
-	while(envp[i][++j]);
+	while (envp[i][j])
+		j++;
 	info->p_str = malloc((j + 1) * sizeof(char));
-	while(envp[i][++k] != 0)
+	while (envp[i][++k] != 0)
 		info->p_str[k - 5] = envp[i][k];
 	info->p_str[k - 5] = '\0';
 }
@@ -49,11 +50,12 @@ void	joinbar(t_info *info, int index)
 {
 	int		i;
 
-	i = -1;
-	while(info->spaths[index][++i]!= '\0');
+	i = 0;
+	while (info->spaths[index][i] != '\0')
+		i++;
 	info->paths[index] = (char *)malloc((i + 2) * sizeof(char));
 	i = -1;
-	while(info->spaths[index][++i])
+	while (info->spaths[index][++i])
 		info->paths[index][i] = info->spaths[index][i];
 	info->paths[index][i] = '/';
 	info->paths[index][i + 1] = '\0';
@@ -70,12 +72,13 @@ void	joinbar(t_info *info, int index)
 void	parsing_paths(t_info *info, char **envp)
 {
 	int	i;
-	
+
 	i = -1;
 	path_str(info, envp);
 	info->spaths = spliting(info->p_str, ':');
-	info->paths = (char **)malloc((how_many_paths(info->p_str, 58) + 1) * sizeof(char *));
-	while(info->spaths[++i])
+	info->paths = (char **)malloc((how_many_paths(info->p_str, 58) + 1) \
+	* sizeof(char *));
+	while (info->spaths[++i])
 		joinbar(info, i);
 	info->paths[i] = NULL;
 }
@@ -93,13 +96,12 @@ void	path_join(t_info *info, int index, int i_p)
 
 	i = -1;
 	j = -1;
-
-	info->path_cmd[index] = (char *)malloc((path_size(info, index, i_p) + 1)* sizeof(char));
-	while(info->paths[i_p][++i])
+	info->path_cmd[index] = (char *)malloc((path_size(info, index, i_p) + 1) \
+	* sizeof(char));
+	while (info->paths[i_p][++i])
 		info->path_cmd[index][i] = info->paths[i_p][i];
 	info->path_cmd[index][0] = '/';
-	while(info->cmdx[index][0][++j])
+	while (info->cmdx[index][0][++j])
 		info->path_cmd[index][i++] = info->cmdx[index][0][j];
 	info->path_cmd[index][i] = '\0';
 }
-

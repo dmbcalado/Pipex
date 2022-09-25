@@ -6,7 +6,7 @@
 /*   By: dmendonc <dmendonc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 22:48:56 by dmendonc          #+#    #+#             */
-/*   Updated: 2022/08/25 18:10:47 by dmendonc         ###   ########.fr       */
+/*   Updated: 2022/09/25 21:26:30 by dmendonc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,11 @@ char	*substring(char *s, int start, int len)
 	int		i;
 	int		fulen;
 	char	*ptr;
-	
+
 	i = -1;
-	fulen = -1;
-	while(s[++fulen]);
+	fulen = 0;
+	while (s[fulen])
+		fulen++;
 	if (fulen - start < len && start < fulen)
 	{
 		ptr = (char *)malloc((fulen - start + 1) * sizeof(char));
@@ -59,15 +60,16 @@ int	count_rows(char *s, char c)
 		if (s[i] == '\0')
 			break ;
 	}
-	return (how_many+1);
+	return (how_many + 1);
 }
 
 int	find_c(char *s, char c, int index)
 {
 	int	i;
 
-	i = index;
-	while (!(s[++i] == c || s[i] == '\0'));
+	i = index + 1;
+	while (!(s[i] == c || s[i] == '\0'))
+		i++;
 	return (i);
 }
 
@@ -88,8 +90,8 @@ int	find_len(char *s, char c, int index)
 
 char	**spliting(char *s, char c)
 {
-	int     i;
-	int	    index;
+	int		i;
+	int		index;
 	char	**matrix;
 
 	matrix = (char **)malloc((count_rows(s, c) + 1) * sizeof(char *));

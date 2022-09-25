@@ -6,7 +6,7 @@
 /*   By: dmendonc <dmendonc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 15:58:54 by dmendonc          #+#    #+#             */
-/*   Updated: 2022/08/25 19:16:51 by dmendonc         ###   ########.fr       */
+/*   Updated: 2022/09/25 21:08:31 by dmendonc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ typedef struct s_info
 	pid_t	id;
 }			t_info;
 
-
 // ^V^V^V^V^        PARSING          ^V^V^V^V^
 void	stringcpy(char *dest, char *src);
 int		count_rows(char *s, char c);
@@ -50,8 +49,6 @@ char	*substring(char *s, int start, int len);
 int		compare(const char *s1, const char *s2);
 int		how_many_paths(char const *s, char c);
 void	safeties(t_info *info, int index, int saf);
-
-
 
 //	^V^V^V^V^    PARSING THE PATHS    ^V^V^V^V^
 
