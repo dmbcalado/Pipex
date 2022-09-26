@@ -6,7 +6,7 @@
 #    By: dmendonc <dmendonc@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/16 20:21:37 by anfreire          #+#    #+#              #
-#    Updated: 2022/09/25 22:35:00 by dmendonc         ###   ########.fr        #
+#    Updated: 2022/09/26 17:16:44 by dmendonc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,10 +33,10 @@ $(NAME)	:	$(OBJS)
 		@echo -e "\ \  _-/ \ \ \                    "
 		@echo -e " \ \_\    \ \_\                   "
 		@echo -e "  \/_/     \/_/                   "
-		@echo -e "                                  "
-		@echo -e "         1__                      "
-		@echo -e "         /\ \                     "
-		@echo -e "        _\_\_\____                "
+		@echo -e "      __________                  "
+		@echo -e "     /\____1____\                 "
+		@echo -e "     \/_/\    \_/                 "
+		@echo -e "        \_\    \__                "
 		@echo -e "       /\_________\               "
 		@echo -e "       \/____0____/               "
 		@echo -e "                                  "
@@ -49,7 +49,7 @@ $(NAME)	:	$(OBJS)
 		@echo -e "\e[32mWork made by:"
 		@echo -e "Diogo MBM Calado, from 42 Lisbon."
 		@echo -e "email : diogombcalado@gmail.com"
-		@echo -e "\e[34mnow run ./pipex and welcome!"
+		@echo -e "\e[34mnow run ./pipex infile cmd1 cmd2 outfile and welcome!"
 		@echo -e ""
 		@echo -e "\e[0m"
 		
