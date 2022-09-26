@@ -6,35 +6,37 @@
 /*   By: dmendonc <dmendonc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 18:20:23 by dmendonc          #+#    #+#             */
-/*   Updated: 2022/09/25 21:25:45 by dmendonc         ###   ########.fr       */
+/*   Updated: 2022/09/26 18:59:11 by dmendonc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
 // -----------------------------------------------------------------------------
-
 // Function function that compares the command with another string. ex: ls.
-
 // -----------------------------------------------------------------------------
 
-int	compare(const char *s1, const char *s2)
+int	compare(char *s1, char *s2)
 {
 	int	i;
 
 	i = -1;
 	while (s2[++i])
 	{
-		if (s1[i] != s2[i] && s2[i] != s1[i] - 32)
+		if (s1[i] != s2[i])
+			return (i);
+	}
+	i = -1;
+	while (s1[++i])
+	{
+		if (s1[i] != s2[i])
 			return (i);
 	}
 	return (-2);
 }
 
 // -----------------------------------------------------------------------------
-
 // Function counts how many paths.
-
 // -----------------------------------------------------------------------------
 
 int	how_many_paths(char const *s, char c)
@@ -65,9 +67,7 @@ int	how_many_paths(char const *s, char c)
 }
 
 // -----------------------------------------------------------------------------
-
 // Function returns the size of the full path to the executable file.
-
 // -----------------------------------------------------------------------------
 
 int	path_size(t_info *info, int index, int i_p)
@@ -85,9 +85,7 @@ int	path_size(t_info *info, int index, int i_p)
 }
 
 // -----------------------------------------------------------------------------
-
 // Function outputs any failure or bad execution in the program.
-
 // -----------------------------------------------------------------------------
 
 void	safeties(int argc, int saf)
