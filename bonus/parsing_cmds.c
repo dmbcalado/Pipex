@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_cmds.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmendonc <dmendonc@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ratinhosujo <ratinhosujo@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 23:40:02 by dmendonc          #+#    #+#             */
-/*   Updated: 2022/09/25 21:43:25 by dmendonc         ###   ########.fr       */
+/*   Updated: 2022/09/27 18:48:25 by ratinhosujo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 // -----------------------------------------------------------------------------
 // Function performs the parsing of the arguments given by the user using the
 // 							  function arg_copy().
-// FAZ O PRETENDIDO
 // -----------------------------------------------------------------------------
 
 void	parsing_cmds(t_info *info, char **argv, int argc)
@@ -23,14 +22,22 @@ void	parsing_cmds(t_info *info, char **argv, int argc)
 	int	i;
 
 	info->argc = argc;
-	info->cmd_nbr = argc - 3;
+	if (!info->heredoc_key)
+		info->cmd_nbr = argc - 3;
+	else
+		info->cmd_nbr = argc - 4;
 	info->cmdx = (char ***)malloc((info->cmd_nbr + 1) * sizeof(char **));
 	info->path_cmd = (char **)malloc((info->cmd_nbr + 1) * sizeof(char *));
 	info->cmdx[info->cmd_nbr] = NULL;
 	info->path_cmd[info->cmd_nbr] = NULL;
 	i = -1;
 	while (++i < info->cmd_nbr)
-		info->cmdx[i] = spliting(argv[i + 2], ' ');
+	{
+		if (!info->heredoc_key)
+			info->cmdx[i] = spliting(argv[i + 2], ' ');
+		else
+			info->cmdx[i] = spiting(argv[i + 3], ' ');
+	}
 }
 
 // -----------------------------------------------------------------------------

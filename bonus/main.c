@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmendonc <dmendonc@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ratinhosujo <ratinhosujo@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 16:53:40 by dmendonc          #+#    #+#             */
-/*   Updated: 2022/09/26 20:05:47 by dmendonc         ###   ########.fr       */
+/*   Updated: 2022/09/27 18:50:45 by ratinhosujo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,20 +117,15 @@ int	main(int argc, char **argv, char **envp)
 	int		i;
 	t_info	info;
 
-	i = -1;
 	parsing_paths (&info, envp);
-	if (handle_redirections(&info, argv, argc) < 0)
-		parsing_cmds (&info, argv, argc);
-	else
-	// isto se calhar da para nao ter que fazer uma nova funcao mas hoje eu estou sem paciencia para pensar
-	// por isso vou deixar para o Diogo de amanha
-	// fode te cabrao
-		new_parsing_cmds(&info, argv, argc);
-	info.pfd = (int **)malloc(info.cmd_nbr * sizeof(int *));
-	while (++i < info.cmd_nbr)
-		info.pfd[i] = (int *)malloc(2 * sizeof(int));
+	handle_redirections(&info, argv, argc);
 	if (info.ffd[0] == -1 || info.ffd[1] == -1)
 		safeties (argc, 1);
+	parsing_cmds (&info, argv, argc);
+	info.pfd = (int **)malloc(info.cmd_nbr * sizeof(int *));
+	i = -1;
+	while (++i < info.cmd_nbr)
+		info.pfd[i] = (int *)malloc(2 * sizeof(int));
 	i = -1;
 	while (++i < info.cmd_nbr)
 		run_processes (&info, envp, i);
