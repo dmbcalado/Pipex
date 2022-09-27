@@ -6,7 +6,7 @@
 /*   By: ratinhosujo <ratinhosujo@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 23:40:02 by dmendonc          #+#    #+#             */
-/*   Updated: 2022/09/27 18:48:25 by ratinhosujo      ###   ########.fr       */
+/*   Updated: 2022/09/27 19:32:00 by ratinhosujo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	parsing_cmds(t_info *info, char **argv, int argc)
 		if (!info->heredoc_key)
 			info->cmdx[i] = spliting(argv[i + 2], ' ');
 		else
-			info->cmdx[i] = spiting(argv[i + 3], ' ');
+			info->cmdx[i] = spliting(argv[i + 3], ' ');
 	}
 }
 

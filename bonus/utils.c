@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmendonc <dmendonc@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ratinhosujo <ratinhosujo@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 18:20:23 by dmendonc          #+#    #+#             */
-/*   Updated: 2022/09/26 18:59:11 by dmendonc         ###   ########.fr       */
+/*   Updated: 2022/09/27 20:19:27 by ratinhosujo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,20 @@
 // Function function that compares the command with another string. ex: ls.
 // -----------------------------------------------------------------------------
 
-int	compare(char *s1, char *s2)
+int	compare(char *s1, char *s2, int len)
 {
 	int	i;
 
 	i = -1;
-	while (s2[++i])
+	while (++i < len)
 	{
-		if (s1[i] != s2[i])
+		if (s2[i] != s1[i] && s1[i] != 0)
 			return (i);
 	}
 	i = -1;
-	while (s1[++i])
+	while (++i < len)
 	{
-		if (s1[i] != s2[i])
+		if (s1[i] != s2[i] && s1[i] != 0)
 			return (i);
 	}
 	return (-2);

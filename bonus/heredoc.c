@@ -6,7 +6,7 @@
 /*   By: ratinhosujo <ratinhosujo@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 18:57:17 by ratinhosujo       #+#    #+#             */
-/*   Updated: 2022/09/27 18:58:14 by ratinhosujo      ###   ########.fr       */
+/*   Updated: 2022/09/27 20:20:10 by ratinhosujo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	save_key(t_info *info, char *key)
 		info->heredoc_key[i] = key[i];
 }
 
-void	heredoc(t_info *info, char **argv, int argc)
+void	heredoc(t_info *info)
 {
 	int		len;
 	char	*buffer;
@@ -40,13 +40,14 @@ void	heredoc(t_info *info, char **argv, int argc)
 		{
 			if (len == len_str(buffer) - 1)
 			{
-				if (compare(buffer, info->heredoc_key) < 0)
+				printf("compare's return: %d\n", compare(buffer, info->heredoc_key, len));
+				if (compare(buffer, info->heredoc_key, len) < 0)
 				{
 					free (buffer);
 					break ;
 				}
 			}
-			write(info->ffd[1], buffer, len_str(buffer));
+			write(info->ffd[0], buffer, len_str(buffer));
 			free (buffer);
 		}
 	}

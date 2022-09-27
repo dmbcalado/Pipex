@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmendonc <dmendonc@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ratinhosujo <ratinhosujo@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 15:58:54 by dmendonc          #+#    #+#             */
-/*   Updated: 2022/09/26 20:03:21 by dmendonc         ###   ########.fr       */
+/*   Updated: 2022/09/27 20:19:42 by ratinhosujo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,18 +47,19 @@ char	*substring(char *s, int start, int len);
 
 //	^V^V^V^V^         UTILS          ^V^V^V^V^
 
-int		compare(char *s1, char *s2);
+int		compare_paths(char *s1, char *s2);
+int		compare(char *s1, char *s2, int len);
 int		how_many_paths(char const *s, char c);
 void	safeties(int argc, int saf);
 void	redirect_fds(int infd, int outfd);
 
-//	^V^V^V^V^         UTILS          ^V^V^V^V^
+//	^V^V^V^V^      REDIRECTIONS       ^V^V^V^V^
 
 int		len_str(char *str);
 int		check_if_heredoc(char **argv, char *str);
-int		handle_redirections(t_info *info, char **argv, int argc);
+void	handle_redirections(t_info *info, char **argv, int argc);
 void	save_key(t_info *info, char *key);
-void	heredoc(t_info *info, char **argv, int argc);
+void	heredoc(t_info *info);
 
 //	^V^V^V^V^    PARSING THE PATHS    ^V^V^V^V^
 

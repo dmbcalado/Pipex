@@ -3,14 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dmendonc <dmendonc@student.42.fr>          +#+  +:+       +#+         #
+#    By: ratinhosujo <ratinhosujo@student.42.fr>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/16 20:21:37 by anfreire          #+#    #+#              #
-#    Updated: 2022/09/26 19:35:01 by dmendonc         ###   ########.fr        #
+#    Updated: 2022/09/27 19:41:14 by ratinhosujo      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = pipex_bonus
+NAME = pipex
 
 SRCS = $(wildcard *.c) $(wildcard ../gnl/*.c)
 
@@ -28,24 +28,25 @@ $(NAME)	:	$(OBJS)
 		@echo	""
 		@echo	""
 		@echo	""
-		@echo -e "\e[34m  ______     ______     __   __     __  __     ______"
-		@echo -e " /\  == \   /\  __ \   /\  -.\ \   /\ \/\ \   /\  ___\	 "
-		@echo -e " \ \  __<   \ \ \/\ \  \ \ \-.  \  \ \ \_\ \  \ \___  \	 "
-		@echo -e "  \ \_____\  \ \_____\  \ \_\\ \_ \  \ \_____\  \/\_____\	 "
-		@echo -e "   \/_____/   \/_____/   \/_/ \/_/   \/_____/   \/_____/	 "
-		@echo -e "                                                       	 "
-		@echo -e " ______   __     ______   ______     __  __                "
-		@echo -e "/\  == \ /\ \   /\  == \ /\  ___\   /\_\_\_\               "
-		@echo -e "\ \  _-/ \ \ \  \ \  _-/ \ \  __\   \/_/\_\/_              "
-		@echo -e " \ \_\    \ \_\  \ \_\    \ \_____\   /\_\/\_\             "
-		@echo -e "  \/_/     \/_/   \/_/     \/_____/   \/_/\/_/"
-		@echo -e ""
-		@echo -e "\e[32mWork made by:"
-		@echo -e "Diogo MBM Calado, from 42 Lisbon."
-		@echo -e "email : diogombcalado@gmail.com"
-		@echo -e "\e[34mnow run ./pipex and welcome!"
-		@echo -e ""
-		@echo -e "\e[0m"
+		@echo 	"\e[34m  ______     ______     __   __     __  __     ______"
+		@echo	" /\  == \   /\  __ \   /\  -.\ \   /\ \/\ \   /\  ___\	 	"
+		@echo	" \ \  __<   \ \ \/\ \  \ \ \-.  \  \ \ \_\ \  \ \___  \	"
+		@echo	"  \ \_____\  \ \_____\  \ \_\\ \_ \  \ \_____\  \/\_____\	"
+		@echo	"   \/_____/   \/_____/   \/_/ \/_/   \/_____/   \/_____/	"
+		@echo	"                                                       	"
+		@echo	"         ______   __     ______   ______     __  __        "
+		@echo	"        /\  == \ /\ \   /\  == \ /\  ___\   /\_\_\_\       "
+		@echo	"        \ \  _-/ \ \ \  \ \  _-/ \ \  __\   \/_/\_\/_      "
+		@echo	"         \ \_\    \ \_\  \ \_\    \ \_____\   /\_\/\_\     "
+		@echo	"          \/_/     \/_/   \/_/     \/_____/   \/_/\/_/	    "
+		@echo	""
+		@echo	""
+		@echo	""
+		@echo	"\e[32m	Work made by: Diogo MBM Calado."
+		@echo	""
+		@echo	"	email : diogombcalado@gmail.com"
+		@echo	""
+		@echo	"\e[0m"
 		
 %.o	:	%.c
 	@gcc $(CFLAGS) -c $^ -I./ -o $@

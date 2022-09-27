@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_paths.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmendonc <dmendonc@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ratinhosujo <ratinhosujo@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 19:13:18 by dmendonc          #+#    #+#             */
-/*   Updated: 2022/09/25 21:35:36 by dmendonc         ###   ########.fr       */
+/*   Updated: 2022/09/27 19:47:29 by ratinhosujo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,10 @@ void	path_str(t_info *info, char **envp)
 	k = 4;
 	while (envp[++i] != 0)
 	{
-		if (compare (envp[i], "PATH") == -2)
+		if (compare_paths(envp[i], "PATH") == -2)
 			break ;
 	}
-	while (envp[i][j])
+	while (envp[i][j] != 0)
 		j++;
 	info->p_str = malloc((j + 1) * sizeof(char));
 	while (envp[i][++k] != 0)
