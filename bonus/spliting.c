@@ -6,7 +6,7 @@
 /*   By: dmendonc <dmendonc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 22:48:56 by dmendonc          #+#    #+#             */
-/*   Updated: 2022/09/25 21:26:30 by dmendonc         ###   ########.fr       */
+/*   Updated: 2022/09/28 16:52:49 by dmendonc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ char	*substring(char *s, int start, int len)
 	if (fulen - start < len && start < fulen)
 	{
 		ptr = (char *)malloc((fulen - start + 1) * sizeof(char));
+		ptr[fulen - start] = 0;
 		len = fulen - start;
 	}
 	else if (fulen - start >= len)

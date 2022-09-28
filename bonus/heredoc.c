@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ratinhosujo <ratinhosujo@student.42.fr>    +#+  +:+       +#+        */
+/*   By: dmendonc <dmendonc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 18:57:17 by ratinhosujo       #+#    #+#             */
-/*   Updated: 2022/09/27 20:20:10 by ratinhosujo      ###   ########.fr       */
+/*   Updated: 2022/09/28 17:46:32 by dmendonc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ void	heredoc(t_info *info)
 			free (buffer);
 		}
 	}
+	free(info->heredoc_key);
 }
 
 int	len_str(char *str)

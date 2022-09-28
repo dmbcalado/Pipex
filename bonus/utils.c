@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ratinhosujo <ratinhosujo@student.42.fr>    +#+  +:+       +#+        */
+/*   By: dmendonc <dmendonc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 18:20:23 by dmendonc          #+#    #+#             */
-/*   Updated: 2022/09/27 20:19:27 by ratinhosujo      ###   ########.fr       */
+/*   Updated: 2022/09/28 19:56:01 by dmendonc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ int	path_size(t_info *info, int index, int i_p)
 	j = 0;
 	while (info->paths[i_p][i])
 		i++;
-	while (info->cmdx[index][0][++j])
+	while (info->cmdx[index][0][j] != 0)
 		j++;
 	return (i + j);
 }

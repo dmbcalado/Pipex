@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ratinhosujo <ratinhosujo@student.42.fr>    +#+  +:+       +#+        */
+/*   By: dmendonc <dmendonc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 16:53:40 by dmendonc          #+#    #+#             */
-/*   Updated: 2022/09/27 19:17:08 by ratinhosujo      ###   ########.fr       */
+/*   Updated: 2022/09/28 22:02:25 by dmendonc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,23 +21,25 @@ void	run_processes(t_info *info, char **envp, int index)
 {
 	if (acessing_cmd (info, index) == 0)
 	{
-		printf ("%s: command not found.\n", info->path_cmd[index]);
+		printf ("%s: command not found.\n", info->cmdx[index][0]);
 		exit (0);
 	}
 	if (pipe (info->pfd[index]) != 0)
 		safeties (info->argc, 3);
+	printf("cmdx[%d][0]: %s\n", index, info->cmdx[index][0]);
+	printf("path : %s\n", info->path_cmd[index]);
+	printf ("info->ffd[0] = %d\n", info->ffd[0]);
+	printf ("info->ffd[1] = %d\n\n", info->ffd[1]);
 	info->id = fork();
 	if (info->id == 0)
 	{
 		close (info->pfd[index][0]);
 		if (index == 0)
-			redirect_fds (info->ffd[0], info->pfd[index][1]);
+			redirect_fds(info->ffd[0], info->pfd[index][1]);
 		else if (index == info->cmd_nbr - 1)
-			redirect_fds (info->pfd[index - 1][0], info->ffd[1]);
+			redirect_fds(info->pfd[index - 1][0], info->ffd[1]);
 		else
-		{
 			redirect_fds (info->pfd[index - 1][0], info->pfd[index][1]);
-		}
 		execve (info->path_cmd[index], info->cmdx[index], envp);
 	}
 	else
@@ -105,6 +107,7 @@ int	main(int argc, char **argv, char **envp)
 	if (info.ffd[0] == -1 || info.ffd[1] == -1)
 		safeties (argc, 1);
 	parsing_cmds (&info, argv, argc);
+	printf("cmd nbrs %d\n", info.cmd_nbr);
 	info.pfd = (int **)malloc(info.cmd_nbr * sizeof(int *));
 	i = -1;
 	while (++i < info.cmd_nbr)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redirections.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ratinhosujo <ratinhosujo@student.42.fr>    +#+  +:+       +#+        */
+/*   By: dmendonc <dmendonc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 17:34:57 by dmendonc          #+#    #+#             */
-/*   Updated: 2022/09/27 20:02:24 by ratinhosujo      ###   ########.fr       */
+/*   Updated: 2022/09/28 22:19:21 by dmendonc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	handle_redirections(t_info *info, char **argv, int argc)
 		info->ffd[0] = open (".heredoc", O_CREAT | O_TRUNC | O_RDWR, 0644);
 		info->ffd[1] = open (argv[argc - 1], O_CREAT | O_APPEND | O_RDWR, 0644);
 		heredoc(info);
+		info->ffd[0] = open (".heredoc", O_RDONLY);
 	}
 }
 

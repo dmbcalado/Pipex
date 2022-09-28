@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_cmds.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ratinhosujo <ratinhosujo@student.42.fr>    +#+  +:+       +#+        */
+/*   By: dmendonc <dmendonc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 23:40:02 by dmendonc          #+#    #+#             */
-/*   Updated: 2022/09/27 19:32:00 by ratinhosujo      ###   ########.fr       */
+/*   Updated: 2022/09/28 22:09:00 by dmendonc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@
 
 void	parsing_cmds(t_info *info, char **argv, int argc)
 {
-	int	i;
+	int i;
 
 	info->argc = argc;
-	if (!info->heredoc_key)
+	if (check_if_heredoc(argv, "heredoc") < 0)
 		info->cmd_nbr = argc - 3;
 	else
 		info->cmd_nbr = argc - 4;
@@ -33,7 +33,7 @@ void	parsing_cmds(t_info *info, char **argv, int argc)
 	i = -1;
 	while (++i < info->cmd_nbr)
 	{
-		if (!info->heredoc_key)
+		if (check_if_heredoc(argv, "heredoc") < 0)
 			info->cmdx[i] = spliting(argv[i + 2], ' ');
 		else
 			info->cmdx[i] = spliting(argv[i + 3], ' ');
