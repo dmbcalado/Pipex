@@ -6,13 +6,13 @@
 #    By: dmendonc <dmendonc@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/16 20:21:37 by anfreire          #+#    #+#              #
-#    Updated: 2022/09/28 16:20:28 by dmendonc         ###   ########.fr        #
+#    Updated: 2022/09/30 16:54:25 by dmendonc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = pipex
 
-SRCS = $(wildcard *.c) $(wildcard ../gnl/*.c)
+SRCS = $(wildcard *.c) $(wildcard ../gnl/*.c) $(wildcard ../ft_printf/*.c)
 
 OBJS = $(SRCS:.c=.o)
 

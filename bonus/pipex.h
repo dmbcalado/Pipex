@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ratinhosujo <ratinhosujo@student.42.fr>    +#+  +:+       +#+        */
+/*   By: dmendonc <dmendonc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 15:58:54 by dmendonc          #+#    #+#             */
-/*   Updated: 2022/09/27 20:19:42 by ratinhosujo      ###   ########.fr       */
+/*   Updated: 2022/09/30 16:54:10 by dmendonc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <sys/types.h>
 # include <string.h>
 # include "../gnl/get_next_line.h"
+# include "../ft_printf/ft_printf.h"
 
 typedef struct s_info
 {

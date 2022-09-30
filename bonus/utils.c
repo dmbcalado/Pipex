@@ -6,7 +6,7 @@
 /*   By: dmendonc <dmendonc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 18:20:23 by dmendonc          #+#    #+#             */
-/*   Updated: 2022/09/28 19:56:01 by dmendonc         ###   ########.fr       */
+/*   Updated: 2022/09/30 16:51:33 by dmendonc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,28 +92,28 @@ void	safeties(int argc, int saf)
 {
 	if (argc < 5)
 	{
-		printf("You need to imput :\n./pipex infile cmd1 cmd2\
+		ft_printf("You need to imput :\n./pipex infile cmd1 cmd2\
 ... outfile\n ");
 		exit(EXIT_FAILURE);
 	}
 	if (saf == 1)
 	{
-		printf("Open on infile or outfile error.");
+		ft_printf("Open on infile or outfile error.");
 		exit(EXIT_FAILURE);
 	}
 	if (saf == 2)
 	{
-		printf("Outfile reading error.");
+		ft_printf("Outfile reading error.");
 		exit(EXIT_FAILURE);
 	}
 	if (saf == 3)
 	{
-		printf("Error detected in the creation of the pipe.");
+		ft_printf("Error detected in the creation of the pipe.");
 		exit(EXIT_FAILURE);
 	}
 	if (saf == 4)
 	{
-		printf("Error detected in the creation of the fork.");
+		ft_printf("Error detected in the creation of the fork.");
 		exit(EXIT_FAILURE);
 	}
 }

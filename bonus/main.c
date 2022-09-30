@@ -6,7 +6,7 @@
 /*   By: dmendonc <dmendonc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 16:53:40 by dmendonc          #+#    #+#             */
-/*   Updated: 2022/09/28 22:02:25 by dmendonc         ###   ########.fr       */
+/*   Updated: 2022/09/30 16:51:02 by dmendonc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,11 @@ void	run_processes(t_info *info, char **envp, int index)
 {
 	if (acessing_cmd (info, index) == 0)
 	{
-		printf ("%s: command not found.\n", info->cmdx[index][0]);
+		ft_printf ("%s: command not found.\n", info->cmdx[index][0]);
 		exit (0);
 	}
 	if (pipe (info->pfd[index]) != 0)
 		safeties (info->argc, 3);
-	printf("cmdx[%d][0]: %s\n", index, info->cmdx[index][0]);
-	printf("path : %s\n", info->path_cmd[index]);
-	printf ("info->ffd[0] = %d\n", info->ffd[0]);
-	printf ("info->ffd[1] = %d\n\n", info->ffd[1]);
 	info->id = fork();
 	if (info->id == 0)
 	{
@@ -107,7 +103,6 @@ int	main(int argc, char **argv, char **envp)
 	if (info.ffd[0] == -1 || info.ffd[1] == -1)
 		safeties (argc, 1);
 	parsing_cmds (&info, argv, argc);
-	printf("cmd nbrs %d\n", info.cmd_nbr);
 	info.pfd = (int **)malloc(info.cmd_nbr * sizeof(int *));
 	i = -1;
 	while (++i < info.cmd_nbr)

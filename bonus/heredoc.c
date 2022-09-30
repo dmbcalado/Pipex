@@ -6,7 +6,7 @@
 /*   By: dmendonc <dmendonc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 18:57:17 by ratinhosujo       #+#    #+#             */
-/*   Updated: 2022/09/28 17:46:32 by dmendonc         ###   ########.fr       */
+/*   Updated: 2022/09/30 16:45:48 by dmendonc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ void	heredoc(t_info *info)
 		{
 			if (len == len_str(buffer) - 1)
 			{
-				printf("compare's return: %d\n", compare(buffer, info->heredoc_key, len));
 				if (compare(buffer, info->heredoc_key, len) < 0)
 				{
 					free (buffer);

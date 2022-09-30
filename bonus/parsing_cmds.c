@@ -6,7 +6,7 @@
 /*   By: dmendonc <dmendonc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 23:40:02 by dmendonc          #+#    #+#             */
-/*   Updated: 2022/09/28 22:09:00 by dmendonc         ###   ########.fr       */
+/*   Updated: 2022/09/30 16:45:30 by dmendonc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 void	parsing_cmds(t_info *info, char **argv, int argc)
 {
-	int i;
+	int	i;
 
 	info->argc = argc;
 	if (check_if_heredoc(argv, "heredoc") < 0)
