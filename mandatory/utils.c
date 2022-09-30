@@ -6,16 +6,14 @@
 /*   By: dmendonc <dmendonc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 18:20:23 by dmendonc          #+#    #+#             */
-/*   Updated: 2022/08/25 19:33:59 by dmendonc         ###   ########.fr       */
+/*   Updated: 2022/09/30 17:03:07 by dmendonc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
 // -----------------------------------------------------------------------------
-
-// Function function that compares the command with another string. ex: ls.
-
+// Function that compares the command with another string. ex: ls.
 // -----------------------------------------------------------------------------
 
 int	compare(const char *s1, const char *s2)
@@ -32,9 +30,7 @@ int	compare(const char *s1, const char *s2)
 }
 
 // -----------------------------------------------------------------------------
-
 // Function counts how many paths.
-
 // -----------------------------------------------------------------------------
 
 int	how_many_paths(char const *s, char c)
@@ -65,9 +61,7 @@ int	how_many_paths(char const *s, char c)
 }
 
 // -----------------------------------------------------------------------------
-
 // Function returns the size of the full path to the executable file.
-
 // -----------------------------------------------------------------------------
 
 int	path_size(t_info *info, int index, int i_p)
@@ -85,23 +79,25 @@ int	path_size(t_info *info, int index, int i_p)
 }
 
 // -----------------------------------------------------------------------------
-
 // Function outputs any failure or bad execution in the program.
-
 // -----------------------------------------------------------------------------
 
 void	safeties(t_info *info, int index, int saf)
 {
 	if (saf == 1)
-		printf("Infile reading error.");
+		ft_printf("Infile reading error.\n");
 	if (saf == 2)
-		printf("%s: command not found.", info->cmdx[index][0]);
+		ft_printf("%s: command not found.\n", info->cmdx[index][0]);
 	if (saf == 3)
-		printf("Error in the creation of the pipe.");
+		ft_printf("Error in the creation of the pipe.\n");
 	if (info->argc < 5)
-		printf("You need to imput :\n./pipex infile cmd1 cmd2... outfile\n ");
+		ft_printf("You need to imput :\n./pipex infile cmd1 cmd2... outfile\n");
 	exit(EXIT_FAILURE);
 }
+
+// -----------------------------------------------------------------------------
+// Function copys the source string to another address, the destiny.
+// -----------------------------------------------------------------------------
 
 void	stringcpy(char *dest, char *src)
 {

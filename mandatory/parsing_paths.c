@@ -6,7 +6,7 @@
 /*   By: dmendonc <dmendonc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 19:13:18 by dmendonc          #+#    #+#             */
-/*   Updated: 2022/08/25 19:30:04 by dmendonc         ###   ########.fr       */
+/*   Updated: 2022/09/30 17:08:27 by dmendonc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,11 +57,9 @@ void	joinbar(t_info *info, int index)
 }
 
 // -----------------------------------------------------------------------------
-
-// Function uses path_returner() to colect the PATH from the envp given by the
+// Function uses path_str() to colect the PATH from the envp given by the
 // the environment, and uses split to get each path seperatly. After that stores
 // in info->paths each seperate path with '/' atached. ex: /usr/bin/
-
 // -----------------------------------------------------------------------------
 
 void	parsing_paths(t_info *info, char **envp)
@@ -80,9 +78,7 @@ void	parsing_paths(t_info *info, char **envp)
 }
 
 // -----------------------------------------------------------------------------
-
-// Function joins the path/ with the command.
-
+// Function joins the "path/" with the command.
 // -----------------------------------------------------------------------------
 
 void	path_join(t_info *info, int index, int i_p)

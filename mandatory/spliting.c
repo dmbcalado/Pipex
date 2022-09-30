@@ -6,11 +6,16 @@
 /*   By: dmendonc <dmendonc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 22:48:56 by dmendonc          #+#    #+#             */
-/*   Updated: 2022/08/25 19:32:33 by dmendonc         ###   ########.fr       */
+/*   Updated: 2022/09/30 17:11:08 by dmendonc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
+
+// -----------------------------------------------------------------------------
+// This functions perform the task of spliting the char * to a char ** where
+// 		the delimiter is given to spliting as the character c
+// -----------------------------------------------------------------------------
 
 char	*substring(char *s, int start, int len)
 {

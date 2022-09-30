@@ -6,7 +6,7 @@
 /*   By: dmendonc <dmendonc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 15:58:54 by dmendonc          #+#    #+#             */
-/*   Updated: 2022/09/25 21:08:31 by dmendonc         ###   ########.fr       */
+/*   Updated: 2022/09/30 16:53:58 by dmendonc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <sys/wait.h>
 # include <sys/types.h>
 # include <string.h>
+# include "../ft_printf/ft_printf.h"
 
 typedef struct s_info
 {

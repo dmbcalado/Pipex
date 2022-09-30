@@ -6,15 +6,14 @@
 /*   By: dmendonc <dmendonc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 23:40:02 by dmendonc          #+#    #+#             */
-/*   Updated: 2022/08/25 19:24:15 by dmendonc         ###   ########.fr       */
+/*   Updated: 2022/09/30 17:07:28 by dmendonc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 // -----------------------------------------------------------------------------
-// Function performs the parsing of the arguments given by the user using the
-// 							  function arg_copy().
-// FAZ O PRETENDIDO
+// Function allocates the cmdx triple pointer and gives its values. Also
+// allocates the path_cmd, that later will save the path to the executable.
 // -----------------------------------------------------------------------------
 
 void	parsing_cmds(t_info *info, char **argv, int argc)
@@ -33,10 +32,8 @@ void	parsing_cmds(t_info *info, char **argv, int argc)
 }
 
 // -----------------------------------------------------------------------------
-
-// Function performs the parsing of the arguments given by the user using the
-// 							  function arg_copy().
-// FAZ O PRETENDIDO
+// Function tests with the env paths where is the executable file of the command
+// 					and stores the path/cmd in path_cmd.
 // -----------------------------------------------------------------------------
 
 int	acessing_cmd(t_info *info, int index)
