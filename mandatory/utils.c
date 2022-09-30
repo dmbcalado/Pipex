@@ -6,24 +6,30 @@
 /*   By: dmendonc <dmendonc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 18:20:23 by dmendonc          #+#    #+#             */
-/*   Updated: 2022/09/30 17:03:07 by dmendonc         ###   ########.fr       */
+/*   Updated: 2022/09/30 16:51:33 by dmendonc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
 // -----------------------------------------------------------------------------
-// Function that compares the command with another string. ex: ls.
+// Function function that compares the command with another string. ex: ls.
 // -----------------------------------------------------------------------------
 
-int	compare(const char *s1, const char *s2)
+int	compare(char *s1, char *s2, int len)
 {
 	int	i;
 
 	i = -1;
-	while (s2[++i])
+	while (++i < len)
 	{
-		if (s1[i] != s2[i] && s2[i] != s1[i] - 32)
+		if (s2[i] != s1[i] && s1[i] != 0)
+			return (i);
+	}
+	i = -1;
+	while (++i < len)
+	{
+		if (s1[i] != s2[i] && s1[i] != 0)
 			return (i);
 	}
 	return (-2);
@@ -73,7 +79,7 @@ int	path_size(t_info *info, int index, int i_p)
 	j = 0;
 	while (info->paths[i_p][i])
 		i++;
-	while (info->cmdx[index][0][j])
+	while (info->cmdx[index][0][j] != 0)
 		j++;
 	return (i + j);
 }
@@ -82,22 +88,35 @@ int	path_size(t_info *info, int index, int i_p)
 // Function outputs any failure or bad execution in the program.
 // -----------------------------------------------------------------------------
 
-void	safeties(t_info *info, int index, int saf)
+void	safeties(int argc, int saf)
 {
+	if (argc < 5)
+	{
+		ft_printf("You need to imput :\n./pipex infile cmd1 cmd2\
+... outfile\n ");
+		exit(EXIT_FAILURE);
+	}
 	if (saf == 1)
-		ft_printf("Infile reading error.\n");
+	{
+		ft_printf("Open on infile or outfile error.");
+		exit(EXIT_FAILURE);
+	}
 	if (saf == 2)
-		ft_printf("%s: command not found.\n", info->cmdx[index][0]);
+	{
+		ft_printf("Outfile reading error.");
+		exit(EXIT_FAILURE);
+	}
 	if (saf == 3)
-		ft_printf("Error in the creation of the pipe.\n");
-	if (info->argc < 5)
-		ft_printf("You need to imput :\n./pipex infile cmd1 cmd2... outfile\n");
-	exit(EXIT_FAILURE);
+	{
+		ft_printf("Error detected in the creation of the pipe.");
+		exit(EXIT_FAILURE);
+	}
+	if (saf == 4)
+	{
+		ft_printf("Error detected in the creation of the fork.");
+		exit(EXIT_FAILURE);
+	}
 }
-
-// -----------------------------------------------------------------------------
-// Function copys the source string to another address, the destiny.
-// -----------------------------------------------------------------------------
 
 void	stringcpy(char *dest, char *src)
 {

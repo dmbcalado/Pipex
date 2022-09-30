@@ -6,7 +6,7 @@
 /*   By: dmendonc <dmendonc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 15:58:54 by dmendonc          #+#    #+#             */
-/*   Updated: 2022/09/30 16:53:58 by dmendonc         ###   ########.fr       */
+/*   Updated: 2022/09/30 16:54:10 by dmendonc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,16 @@
 # include <sys/wait.h>
 # include <sys/types.h>
 # include <string.h>
+# include "../gnl/get_next_line.h"
 # include "../ft_printf/ft_printf.h"
 
 typedef struct s_info
 {
+	pid_t	id;
+	int		flag;
 	int		argc;
 	int		ffd[2];
-	int		pfd[2];
+	int		**pfd;
 	int		cmd_nbr;
 	char	*p_str;
 	char	**paths;
@@ -33,11 +36,9 @@ typedef struct s_info
 	char	**cmd;
 	char	***cmdx;
 	char	**path_cmd;
-	int		flag;
-	pid_t	id;
+	char	*heredoc_key;
 }			t_info;
 
-// ^V^V^V^V^        PARSING          ^V^V^V^V^
 void	stringcpy(char *dest, char *src);
 int		count_rows(char *s, char c);
 int		find_c(char *s, char c, int index);
@@ -47,9 +48,19 @@ char	*substring(char *s, int start, int len);
 
 //	^V^V^V^V^         UTILS          ^V^V^V^V^
 
-int		compare(const char *s1, const char *s2);
+int		compare_paths(char *s1, char *s2);
+int		compare(char *s1, char *s2, int len);
 int		how_many_paths(char const *s, char c);
-void	safeties(t_info *info, int index, int saf);
+void	safeties(int argc, int saf);
+void	redirect_fds(int infd, int outfd);
+
+//	^V^V^V^V^      REDIRECTIONS       ^V^V^V^V^
+
+int		len_str(char *str);
+int		check_if_heredoc(char **argv, char *str);
+void	handle_redirections(t_info *info, char **argv, int argc);
+void	save_key(t_info *info, char *key);
+void	heredoc(t_info *info);
 
 //	^V^V^V^V^    PARSING THE PATHS    ^V^V^V^V^
 
@@ -67,8 +78,8 @@ int		acessing_cmd(t_info *info, int index);
 
 //	^V^V^V^V^     MAIN FUNCTIONS     ^V^V^V^V^
 
-void	free_all(t_info *info);
-void	free_cmds(t_info *info);
-void	run_father(t_info *info);
 void	run_processes(t_info *info, char **envp, int index);
+void	run_father(t_info *info, int index);
+void	free_cmds(t_info *info);
+void	free_all(t_info *info);
 #endif

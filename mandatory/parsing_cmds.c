@@ -6,14 +6,15 @@
 /*   By: dmendonc <dmendonc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 23:40:02 by dmendonc          #+#    #+#             */
-/*   Updated: 2022/09/30 17:07:28 by dmendonc         ###   ########.fr       */
+/*   Updated: 2022/09/30 19:54:25 by dmendonc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
+
 // -----------------------------------------------------------------------------
-// Function allocates the cmdx triple pointer and gives its values. Also
-// allocates the path_cmd, that later will save the path to the executable.
+// Function performs the parsing of the arguments given by the user using the
+// 							  function arg_copy().
 // -----------------------------------------------------------------------------
 
 void	parsing_cmds(t_info *info, char **argv, int argc)
@@ -32,8 +33,10 @@ void	parsing_cmds(t_info *info, char **argv, int argc)
 }
 
 // -----------------------------------------------------------------------------
-// Function tests with the env paths where is the executable file of the command
-// 					and stores the path/cmd in path_cmd.
+
+// Function performs the parsing of the arguments given by the user using the
+// 							  function arg_copy().
+// FAZ O PRETENDIDO
 // -----------------------------------------------------------------------------
 
 int	acessing_cmd(t_info *info, int index)
@@ -42,8 +45,8 @@ int	acessing_cmd(t_info *info, int index)
 	int	c;
 	int	ret;
 
-	i = -1;
 	c = 0;
+	i = -1;
 	while (info->paths[c])
 		c++;
 	while (++i < c)
@@ -53,7 +56,7 @@ int	acessing_cmd(t_info *info, int index)
 		if (ret == 0)
 			return (1);
 		else
-			free (info->path_cmd[index]);
+			free(info->path_cmd[index]);
 	}
 	return (0);
 }

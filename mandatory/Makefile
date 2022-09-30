@@ -6,7 +6,7 @@
 #    By: dmendonc <dmendonc@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/16 20:21:37 by anfreire          #+#    #+#              #
-#    Updated: 2022/09/30 16:53:29 by dmendonc         ###   ########.fr        #
+#    Updated: 2022/09/30 19:56:35 by dmendonc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ SRCS = $(wildcard *.c) $(wildcard ../ft_printf/*.c)
 
 OBJS = $(SRCS:.c=.o)
 
-CFLAGS	= -g -Wall -Wextra -Werror -fsanitize=address
+CFLAGS	= -g -Wall -Wextra -Werror #-fsanitize=address
 
 all	:	$(NAME)
 
@@ -28,30 +28,19 @@ $(NAME)	:	$(OBJS)
 		@echo	""
 		@echo	""
 		@echo	""
-		@echo -e "\e[34m ______   __                      "
-		@echo -e "/\  == \ /\ \                     "
-		@echo -e "\ \  __/ \ \ \                    "
-		@echo -e " \ \_\    \ \_\                   "
-		@echo -e "  \/_/     \/_/                   "
-		@echo -e "      __________                  "
-		@echo -e "     /\____1____\                 "
-		@echo -e "     \/_/\    \_/                 "
-		@echo -e "        \_\    \__                "
-		@echo -e "       /\_________\               "
-		@echo -e "       \/____0____/               "
-		@echo -e "                                  "
-		@echo -e "    ______   ______     __  __    "
-		@echo -e "   /\  == \ /\  ___\   /\_\_\_\   "
-		@echo -e "   \ \  __/ \ \  __\   \/_/\_\/_  "
-		@echo -e "    \ \_\    \ \_____\   /\_\/\_\ "
-		@echo -e "     \/_/     \/_____/   \/_/\/_/ "
+		@echo -e "\033[34m         ______   __     ______   ______     __  __        "
+		@echo -e "        /\  == \ /\ \   /\  == \ /\  ___\   /\_\_\_\       "
+		@echo -e "        \ \  _-/ \ \ \  \ \  _-/ \ \  __\   \/_/\_\/_      "
+		@echo -e "         \ \_\    \ \_\  \ \_\    \ \_____\   /\_\/\_\     "
+		@echo -e "          \/_/     \/_/   \/_/     \/_____/   \/_/\/_/	    "
 		@echo -e ""
-		@echo -e "\e[32mWork made by:"
-		@echo -e "Diogo MBM Calado, from 42 Lisbon."
-		@echo -e "email : diogombcalado@gmail.com"
-		@echo -e "\e[34mnow run ./pipex infile cmd1 cmd2 outfile and welcome!"
 		@echo -e ""
-		@echo -e "\e[0m"
+		@echo -e ""
+		@echo -e "\033[32m	Work made by: Diogo MBM Calado."
+		@echo -e ""
+		@echo -e "	email : diogombcalado@gmail.com"
+		@echo -e ""
+		@echo -e "\033[0m"
 		
 %.o	:	%.c
 	@gcc $(CFLAGS) -c $^ -I./ -o $@
