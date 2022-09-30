@@ -6,7 +6,7 @@
 /*   By: dmendonc <dmendonc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 16:53:40 by dmendonc          #+#    #+#             */
-/*   Updated: 2022/09/30 16:51:02 by dmendonc         ###   ########.fr       */
+/*   Updated: 2022/09/30 18:32:29 by dmendonc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,26 @@ void	run_father(t_info *info, int index)
 {
 	close (info->pfd[index][1]);
 	wait (NULL);
-	if (info->ffd[1] == STDOUT_FILENO)
-		exit(0);
-	else
-		dup2(info->pfd[index][0], STDIN_FILENO);
+}
+
+int	main(int argc, char **argv, char **envp)
+{
+	int		i;
+	t_info	info;
+
+	parsing_paths (&info, envp);
+	handle_redirections(&info, argv, argc);
+	if (info.ffd[0] == -1 || info.ffd[1] == -1)
+		safeties (argc, 1);
+	parsing_cmds (&info, argv, argc);
+	info.pfd = (int **)malloc(info.cmd_nbr * sizeof(int *));
+	i = -1;
+	while (++i < info.cmd_nbr)
+		info.pfd[i] = (int *)malloc(2 * sizeof(int));
+	i = -1;
+	while (++i < info.cmd_nbr)
+		run_processes (&info, envp, i);
+	free_all(&info);
 }
 
 void	free_all(t_info *info)
@@ -91,24 +107,4 @@ void	free_cmds(t_info *info)
 	while (++i < info->cmd_nbr)
 		free (info->pfd[i]);
 	free (info->pfd);
-}
-
-int	main(int argc, char **argv, char **envp)
-{
-	int		i;
-	t_info	info;
-
-	parsing_paths (&info, envp);
-	handle_redirections(&info, argv, argc);
-	if (info.ffd[0] == -1 || info.ffd[1] == -1)
-		safeties (argc, 1);
-	parsing_cmds (&info, argv, argc);
-	info.pfd = (int **)malloc(info.cmd_nbr * sizeof(int *));
-	i = -1;
-	while (++i < info.cmd_nbr)
-		info.pfd[i] = (int *)malloc(2 * sizeof(int));
-	i = -1;
-	while (++i < info.cmd_nbr)
-		run_processes (&info, envp, i);
-	free_all (&info);
 }
