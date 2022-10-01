@@ -34,4 +34,4 @@
 <p>So the task now is to perform the same task as an<strong> heredoc</strong> and to<strong> append</strong> the output of the commands ran on the heredoc in the outputfile.</p>
 <p>The logic used was quite similar to the one described above, to append was just to change the flag <strong>0_TRUNC to 0_APPEND</strong>, and the heredoc could be both a pipe or a hidden file as a file descriptor.</p>
 <p>As my grade i got 125, getting full grade on both mandatory and bonus parts.</p>
-<div align="center"><br /><img src="https://user-images.githubusercontent.com/99777188/193395212-77b31dcb-76cb-478f-8024-16e6b4960e28.png" width="520" height="170" /></div>
+<div align="center"><br /><img src="https://user-images.githubusercontent.com/99777188/193395212-77b31dcb-76cb-478f-8024-16e6b4960e28.png" width="600" height="200" /></div>
